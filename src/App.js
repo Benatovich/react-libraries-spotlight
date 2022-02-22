@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import DataGrid from 'react-data-grid';
+import data from './data';
+import { generateColumns, makeCountByAge } from './data-utils';
+import * as V from 'victory';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <><DataGrid
+      columns={generateColumns(data)}
+      rows={data} /><V.VictoryChart domainPadding={20}>
+      <V.VictoryAxis
+        tickValues={[1, 2, 3, 4]}
+        style={{
+          axis: { stroke: '#E0F2F1' },
+          axisLabel: { fontSize: 14 },
+          ticks: { stroke: '#ccc' },
+          tickLabels: { fontSize: 10, angle: 90, fill: 'blue', fontWeight: 'bold', verticalAnchor: 'bottom' }
+        }} />
+      <V.VictoryAxis
+        dependentAxis
+      />
+
+      <V.VictoryBar data={makeCountByAge(data)} x='make' y='averageAge' />
+    </V.VictoryChart></>
   );
 }
 
