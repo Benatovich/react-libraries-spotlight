@@ -17,6 +17,20 @@ function App() {
           axis: { stroke: '#E0F2F1' },
           axisLabel: { fontSize: 14 },
           ticks: { stroke: '#ccc' },
+          tickLabels: { fontSize: 10, angle: 0, fill: 'red', fontWeight: 'bold' }
+        }} />
+      <V.VictoryAxis
+        dependentAxis
+      />
+      <V.VictoryBar data={genderCountByCarAge(data)} x='gender' y='averageCarAge' />
+    </V.VictoryChart>
+    <V.VictoryChart domainPadding={20}>
+      <V.VictoryAxis
+        tickValues={[1, 2, 3, 4]}
+        style={{
+          axis: { stroke: '#E0F2F1' },
+          axisLabel: { fontSize: 14 },
+          ticks: { stroke: '#ccc' },
           tickLabels: { fontSize: 10, angle: 90, fill: 'blue', fontWeight: 'bold', verticalAnchor: 'bottom' }
         }} />
       <V.VictoryAxis
@@ -31,18 +45,3 @@ function App() {
 console.log(genderCountByCarAge(data));
 console.log(makeCountByAge(data));
 export default App;
-
-{/* <V.VictoryChart domainPadding={20}>
-  <V.VictoryAxis
-    tickValues={[1, 2, 3, 4]}
-    style={{
-      axis: { stroke: '#E0F2F1' },
-      axisLabel: { fontSize: 14 },
-      ticks: { stroke: '#ccc' },
-      tickLabels: { fontSize: 10, angle: 90, fill: 'red', fontWeight: 'bold', verticalAnchor: 'bottom' }
-    }} />
-  <V.VictoryAxis
-    dependentAxis
-  />
-  <V.VictoryBar data={getTotalOfEachGender(data)} x='gender' y='count' />
-</V.VictoryChart> */}
