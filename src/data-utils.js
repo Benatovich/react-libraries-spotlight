@@ -32,3 +32,36 @@ export function makeCountByAge(arr) {
       averageAge: entry[1].total / entry[1].count,
     }));
 }
+
+export function genderCountByCarAge(arr) {
+  const countTotalObject = arr.reduce((acc, curr) => {
+    if (acc[curr.gender]) {
+      acc[curr.gender].count++;
+      acc[curr.gender].total = acc[curr.gender].total + curr.car_model_year;
+    } else {
+      acc[curr.gender] = {};
+      acc[curr.gender].count = 1;
+      acc[curr.gender].total = curr.car_model_year;
+    }
+    
+    return acc;
+  }, {});
+
+  return Object.entries(countTotalObject)
+    .map(entry => ({
+      gender: entry[0],
+      averageCarYear: entry[1].total / entry[1].count,
+      averageCarAge: 2022 - (entry[1].total / entry[1].count),
+    }));
+}
+
+// export function getTotalOfEachGender(data) {
+//   const countingHashMap = {};
+
+//   for (let customer of data) {
+//     countingHashMap[customer.gender]
+//       ? countingHashMap[customer.gender]++
+//       : countingHashMap[customer.gender] = 1;
+//   }
+//   return countingHashMap;
+// }
