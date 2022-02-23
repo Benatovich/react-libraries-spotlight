@@ -14,13 +14,13 @@ export function generateColumns(arr) {
 
 export function makeCountByAge(arr) {
   const countTotalObject = arr.reduce((acc, curr) => {
-    if (acc[curr.department]) {
-      acc[curr.department].count++;
-      acc[curr.department].total = acc[curr.department].total + curr.age;
+    if (acc[curr.car_make]) {
+      acc[curr.car_make].count++;
+      acc[curr.car_make].total = acc[curr.car_make].total + curr.age;
     } else {
-      acc[curr.department] = {};
-      acc[curr.department].count = 1;
-      acc[curr.department].total = curr.age;
+      acc[curr.car_make] = {};
+      acc[curr.car_make].count = 1;
+      acc[curr.car_make].total = curr.age;
     }
 
     return acc;

@@ -9,7 +9,8 @@ function App() {
   return (
     <><DataGrid
       columns={generateColumns(data)}
-      rows={data} /><V.VictoryChart domainPadding={20}>
+      rows={data} />
+    <V.VictoryChart domainPadding={20}>
       <V.VictoryAxis
         tickValues={[1, 2, 3, 4]}
         style={{
