@@ -1,8 +1,17 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { generateColumns } from './data-utils';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('should make an array of columns that capitalizes the key, replaces underscores with spaces, and makes that the name property', () => {
+  const expected = [
+    { key: 'name', name: 'Name' },
+    { key: 'occupation', name: 'Occupation' },
+    { key: 'knows_daredevils_identity', name: 'Knows Daredevils Identity' },
+  ];
+
+  const actual = generateColumns([
+    { name: 'kingpin', occupation: 'crime', knows_daredevils_identity: true },
+    { name: 'bullseye', occupation: 'fbi', knows_daredevils_identity: false },
+    { name: 'foggy', occupation: 'attorney', knows_daredevils_identity: true },
+  ]);
+
+  expect(actual).toEqual(expected);
 });
