@@ -10,6 +10,8 @@ function App() {
     <><DataGrid
       columns={generateColumns(data)}
       rows={data} />
+    <V.VictoryPie data={makeCountByAge(data)} x='make' y='averageAge'/>
+
     <V.VictoryChart domainPadding={20}>
       <V.VictoryAxis
         tickValues={[1, 2, 3, 4]}
