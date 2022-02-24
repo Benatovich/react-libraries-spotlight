@@ -33,6 +33,27 @@ export function makeCountByAge(arr) {
     }));
 }
 
+export function carModelYearCountByAge(arr) {
+  const countTotalObject = arr.reduce((acc, curr) => {
+    if (acc[curr.car_model_year]) {
+      acc[curr.car_model_year].count++;
+      acc[curr.car_model_year].total = acc[curr.car_model_year].total + curr.age;
+    } else {
+      acc[curr.car_model_year] = {};
+      acc[curr.car_model_year].count = 1;
+      acc[curr.car_model_year].total = curr.age;
+    }
+    
+    return acc;
+  }, {});
+
+  return Object.entries(countTotalObject)
+    .map(entry => ({
+      carModelYear: entry[0],
+      averageAge: entry[1].total / entry[1].count,
+    }));
+}
+
 export function genderCountByCarAge(arr) {
   const countTotalObject = arr.reduce((acc, curr) => {
     if (acc[curr.gender]) {
